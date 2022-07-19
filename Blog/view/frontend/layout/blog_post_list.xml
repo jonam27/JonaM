@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <block name="blog.post.detail" template="JonaM_Blog::post/detail.phtml" />
+            <!-- You can reuse blocks multiple times in a page by making the blocks names unique.
+                Add .extra at the end of your block name to make it unique. -->
+            <!-- You can also wrap your blocks in container nodes and add attributes like:
+                1. htmlClass = element class name
+                2. htmlId = element ID
+                3. htmlTag = html element type
+                This is the best way to target a specific element on a page with js but can't target it because it does not have a unique identifier.
+                Now if you load this, your block will be wrapped in a div with your specified class and id
+            -->
+            <container htmlTag="div" htmlClass="blog-sidebar-extra" htmlId="blog-post-sidebar-extra">
+                <block name="blog.post.sidebar.extra" template="JonaM_Blog::post/sidebar.phtml" />
+            </container>
+
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block name="blog.post.sidebar" template="JonaM_Blog::post/sidebar.phtml" />
+        </referenceContainer>
+        <!-- You can hide blocks by adding attributes remove or display.
+            1. display = if this is set to false, this will not be displayed but will still be 
+            accessible to other modules since this block is still in layout xml tree
+            2. remove = if set to true, not only it will not be rendered but it will be also 
+            removed from the layout xml tree and cannot be used by other modules
+            -->
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
+        <referenceBlock name="wishlist_sidebar" template="JonaM_Blog::wishlist/sidebar.phtml" />
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--
+    /**
+    * Attributes:
+    * for = this will be our data interface, so this will be JonaM\Blog\Api\Data\PostInterface
+    * type = our class, JonaM\Blog\Model\Post
+    * 
+    * Now the PostInterface can be sent as a requested object with dependency injection, and an instance of our Post model will be returned.
+    */
+-->
+    <preference for="JonaM\Blog\Api\Data\PostInterface" type="JonaM\Blog\Model\Post" />
+    <preference for="JonaM\Blog\Api\PostRepositoryInterface" type="JonaM\Blog\Model\PostRepository"/>
+</config>

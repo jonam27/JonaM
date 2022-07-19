@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Just copy the schema structure from any Magento core modules
+ *
+ * If you need to make updates in your db_schema and have these columns or indexes 
+ * automatically removed whenever s:up is executed, we need to generate a whitelist
+ *
+ * This can be done in CLI:
+ * bin/magento setup:db-declaration:generate-whitelist
+ *
+ * This will create a db_schema_whitelis.json in the same directory as db_schema.xml
+ * This file contains our db schema in json format
+ *
+ * You can test by commenting out a column and run s:up and check the table
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+        <!--
+        /**
+        * In order to avoid conflicts with other modules, prefix you table names
+        * with your vendorname_modulename_entityname
+        * resource = database shards. Options are: default, checkout or sales. Almost always use default
+        * engine = always be innodb
+        * comment = comment
+        */
+        -->
+        <table name="jonam_blog_post" resource="default" engine="innodb" comment="Post Table">
+                <!-- 
+                /**
+                * unsigned = no negative numbers in this column
+                * identity = increment
+                */
+                -->
+                <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Post ID"/>
+                <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Post Title"/>
+                <column xsi:type="mediumtext" name="content" nullable="true" comment="Post Content"/>
+                <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Post Created At"/>
+                <!-- 
+                /**
+                * Since we have an incrementing column (id), an index must be set on it.
+                * Setup  as a primary key constraint, which automatically creates an index in this column
+                * Add <column> which this index relates to.
+                * Attribute name will have the value of our column name id
+                */
+                -->
+                <constraint xsi:type="primary" referenceId="PRIMARY">
+                        <column name="id" />
+                </constraint>
+        </table>
+</schema>
