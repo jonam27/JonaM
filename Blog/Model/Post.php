@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace JonaM\Blog\Model;
 
 use JonaM\Blog\Api\Data\PostInterface;
-use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModel;
 use Magento\Framework\Model\AbstractModel;
 
 class Post extends AbstractModel implements PostInterface
