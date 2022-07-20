@@ -2,7 +2,19 @@
 <page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="main">
-            <block name="blog.post.detail" template="JonaM_Blog::post/detail.phtml" />
+            <block name="blog.post.list" template="JonaM_Blog::post/list.phtml">
+                <arguments>
+                <!--
+                    This is for passing data to a template using ViewModel. 
+                    By doing this, this ViewModel is now accessible as data of the block.
+                    Attributes:
+                        - name = should be descriptive; "_vm" signifies ViewModel to avoid ambiguity with posts in our code
+                                = this will also be called in your phtml files 
+                        - value = fully qualified class name to our ViewModel.
+                -->
+                    <argument name="post_vm" xsi:type="object">JonaM\Blog\ViewModel\Post</argument>
+                </arguments>
+            </block>
             <!-- You can reuse blocks multiple times in a page by making the blocks names unique.
                 Add .extra at the end of your block name to make it unique. -->
             <!-- You can also wrap your blocks in container nodes and add attributes like:
@@ -12,9 +24,9 @@
                 This is the best way to target a specific element on a page with js but can't target it because it does not have a unique identifier.
                 Now if you load this, your block will be wrapped in a div with your specified class and id
             -->
-            <container htmlTag="div" htmlClass="blog-sidebar-extra" htmlId="blog-post-sidebar-extra">
+            <!-- <container htmlTag="div" htmlClass="blog-sidebar-extra" htmlId="blog-post-sidebar-extra">
                 <block name="blog.post.sidebar.extra" template="JonaM_Blog::post/sidebar.phtml" />
-            </container>
+            </container> -->
 
         </referenceContainer>
         <referenceContainer name="sidebar.main">
