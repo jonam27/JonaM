@@ -1,11 +1,14 @@
+<?php
+
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var JonaM\Blog\ViewModel\Post $postVm
+ */
+$postVm = $block->getData('post_vm');
+$post = $postVm->getDetail();
+?>
 <div class="blog-post-detail">
-    <!-- 
-        Magento comes with a special PHP function we should pass all text through. 
-        wrap this text in a short echo tag, and wrap it in this special function __()
-        This function makes text translatable to many other languages. 
-        Make it a practice to wrap all static texts this way
-    -->
-    <h1><?= __('Title'); ?></h1>
-    <p><em><?= __('Created: %1', '2020 Aug 27') ?></em></p>
-    <p><?= __('This is some content') ?></p>
+    <h1><?= $post->getTitle() ?></h1>
+    <p><em><?= __('Created: %1', $post->getCreatedAt()) ?></em></p>
+    <p><?= $post->getContent() ?></p>
 </div>

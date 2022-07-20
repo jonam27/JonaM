@@ -30,7 +30,11 @@
 
         </referenceContainer>
         <referenceContainer name="sidebar.main">
-            <block name="blog.post.sidebar" template="JonaM_Blog::post/sidebar.phtml" />
+            <block name="blog.post.sidebar" template="JonaM_Blog::post/sidebar.phtml">
+                <arguments>
+                    <argument name="post_vm" xsi:type="object">JonaM\Blog\ViewModel\Post</argument>
+                </arguments>
+            </block>
         </referenceContainer>
         <!-- You can hide blocks by adding attributes remove or display.
             1. display = if this is set to false, this will not be displayed but will still be 
@@ -39,6 +43,5 @@
             removed from the layout xml tree and cannot be used by other modules
             -->
         <referenceBlock name="catalog.compare.sidebar" remove="true" />
-        <referenceBlock name="wishlist_sidebar" template="JonaM_Blog::wishlist/sidebar.phtml" />
     </body>
 </page>

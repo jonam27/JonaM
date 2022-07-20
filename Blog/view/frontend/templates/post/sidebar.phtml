@@ -5,19 +5,19 @@
  * To get access to our IDE's intellisense functionality, we will need to typehint this variable at the top of our template file.
  *
  * @var Magento\Framework\View\Element\Template $block
+ * @var JonaM\Blog\ViewModel\Post $postVm
  */
+$postVm = $block->getData('post_vm');
 ?>
 <div class="blog-post-sidebar">
-    <!-- 
-        Magento comes with a special PHP function we should pass all text through. 
-        wrap this text in a short echo tag, and wrap it in this special function __()
-        This function makes text translatable to many other languages. 
-        Make it a practice to wrap all static texts this way
-    -->
     <p><strong><?= __('Other Blog Posts'); ?></strong></p>
     <ul>
-        <li><a href="<?= $block->getUrl('blog/post/detail', ['id' => 1]) ?>">Post 1</a></li>
-        <li><a href="<?= $block->getUrl('blog/post/detail', ['id' => 2]) ?>">Post 2</a></li>
-        <li><a href="<?= $block->getUrl('blog/post/detail', ['id' => 3]) ?>">Post 3</a></li>
+        <?php foreach ($postVm->getList() as $post) : ?>
+            <li>
+                <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
+                    <?= $post->getTitle() ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
     </ul>
 </div>
