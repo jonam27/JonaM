@@ -20,12 +20,14 @@
 $postVm = $block->getData('post_vm');
 ?>
 <div class="blog-post-list">
-    <!-- 
-        Magento comes with a special PHP function we should pass all text through. 
-        wrap this text in a short echo tag, and wrap it in this special function __()
-        This function makes text translatable to many other languages. 
-        Make it a practice to wrap all static texts this way
-    -->
+    <?php
+    /**
+     * Magento comes with a special PHP function we should pass all text through. 
+     *  wrap this text in a short echo tag, and wrap it in this special function __()
+     *  This function makes text translatable to many other languages. 
+     *  Make it a practice to wrap all static texts this way
+     */
+    ?>
     <h1><?= __('Blog Post List'); ?></h1>
     <ul>
         <?php
